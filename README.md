@@ -30,7 +30,7 @@ _Se desea implementar un backend para un microservicio que permita registrar y c
   - RequestBody:
     ```json
     {
-      "id": null,
+      "id": "cabbd417-1841-4b25-8798-e8d54df1416e",
       "nombre": "Clean Architecture",
       "fecha_cierre_inscripcion": "2023-03-01T10:00:00.000Z",
       "nivel": "Inicial"
