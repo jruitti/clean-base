@@ -12,14 +12,14 @@ public class CursoUnitTest {
 
     @Test
     public void instanciar_atributosCorrectos_Instancia() {
-        Curso curso = Curso.factory(UUID.randomUUID(), "Programación", LocalDate.of(2024,11,21), CursoNivel.MEDIO);
+        Curso curso = Curso.factory(UUID.randomUUID(), "Programación", LocalDate.MAX, CursoNivel.MEDIO);
         Assertions.assertNotNull(curso);
     }
 
     @Test
     public void instanciar_faltaNombre_CursoIncompletoExcepcion() {
-        Exception exceptionVacio = Assertions.assertThrows(CursoIncompletoException.class, () -> Curso.factory(UUID.randomUUID(), "", LocalDate.of(2024, 11, 21), CursoNivel.MEDIO));
-        Exception exceptionNulo = Assertions.assertThrows(CursoIncompletoException.class, () -> Curso.factory(UUID.randomUUID(), "", LocalDate.of(2024, 11, 21), CursoNivel.MEDIO));
+        Exception exceptionVacio = Assertions.assertThrows(CursoIncompletoException.class, () -> Curso.factory(UUID.randomUUID(), "", LocalDate.MAX, CursoNivel.MEDIO));
+        Exception exceptionNulo = Assertions.assertThrows(CursoIncompletoException.class, () -> Curso.factory(UUID.randomUUID(), null, LocalDate.MAX, CursoNivel.MEDIO));
         Assertions.assertEquals("El nombre del curso no puede ser nulo", exceptionVacio.getMessage());
         Assertions.assertEquals("El nombre del curso no puede ser nulo", exceptionNulo.getMessage());
     }
@@ -27,13 +27,14 @@ public class CursoUnitTest {
     @Test
     public void instaciar_faltaFechaDeCierre_CursoIncompletoExcepcion() {
         Exception exceptionNulo = Assertions.assertThrows(CursoIncompletoException.class, () -> Curso.factory(UUID.randomUUID(), "Programación", null, CursoNivel.MEDIO));
-        Assertions.assertEquals("La fecha de cierre de inscripción del curso no puede ser nula", exceptionNulo.getMessage());
+        Exception exceptionFechaVencida = Assertions.assertThrows(CursoIncompletoException.class, () -> Curso.factory(UUID.randomUUID(), "Programación", LocalDate.now().plusDays(-1), CursoNivel.MEDIO));
+        Assertions.assertEquals("La fecha de cierre de inscripción del curso no es válida", exceptionNulo.getMessage());
+        Assertions.assertEquals("La fecha de cierre de inscripción del curso no es válida", exceptionFechaVencida.getMessage());
     }
 
     @Test
     public void instanciar_faltaNivelCurso_CursoIncompletoExcepcion() {
-        Exception exceptionNulo = Assertions.assertThrows(CursoIncompletoException.class, () -> Curso.factory(UUID.randomUUID(), "Programación", LocalDate.of(2024, 11, 21), null));
+        Exception exceptionNulo = Assertions.assertThrows(CursoIncompletoException.class, () -> Curso.factory(UUID.randomUUID(), "Programación", LocalDate.MAX, null));
         Assertions.assertEquals("El nivel del curso no puede ser nulo", exceptionNulo.getMessage());
     }
-
 }

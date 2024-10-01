@@ -23,7 +23,7 @@ public class Curso {
             throw new CursoIncompletoException("El nombre del curso no puede ser nulo");
         }
         if(fechaCierreInscripcion == null || fechaCierreInscripcion.isBefore(LocalDate.now())){
-            throw new CursoIncompletoException("La fecha de cierre de inscripción del curso no puede ser nula");
+            throw new CursoIncompletoException("La fecha de cierre de inscripción del curso no es válida");
         }
         if(nivel == null){
             throw new CursoIncompletoException("El nivel del curso no puede ser nulo");

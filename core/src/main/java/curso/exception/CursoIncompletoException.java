@@ -1,7 +1,7 @@
 package curso.exception;
 
 public class CursoIncompletoException extends RuntimeException {
-    public CursoIncompletoException(String s) {
-        super(s);
+    public CursoIncompletoException(String message) {
+        super(message);
     }
 }
