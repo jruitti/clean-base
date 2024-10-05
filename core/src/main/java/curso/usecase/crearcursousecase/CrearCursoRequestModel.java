@@ -11,7 +11,7 @@ public class CrearCursoRequestModel {
     private LocalDate fechaCierreInscripcion;
     private CursoNivel nivel;
 
-    public CrearCursoRequestModel(UUID id) {
+    public CrearCursoRequestModel() {
     }
 
     private CrearCursoRequestModel(UUID id, String nombre, LocalDate fechaCierreInscripcion, CursoNivel nivel) {

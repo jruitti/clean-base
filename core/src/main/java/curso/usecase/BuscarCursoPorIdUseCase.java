@@ -1,6 +1,6 @@
 package curso.usecase;
 
-import curso.exception.CursoExisteException;
+import curso.exception.CursoNoExisteException;
 import curso.input.BuscarCursoPorIdInput;
 import curso.modelo.Curso;
 import curso.output.BuscarCursoPorIdRepository;
@@ -18,7 +18,7 @@ public class BuscarCursoPorIdUseCase implements BuscarCursoPorIdInput {
     public Curso buscarCursoPorId(UUID id) {
         Curso curso = buscarCursoPorIdRepository.buscarCursoPorId(id);
         if(curso == null){
-            throw new CursoExisteException("El curso ya existe");
+            throw new CursoNoExisteException("El curso no existe");
         }
         return curso;
     }
