@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CreateCourseRepository implements CreateCourseOutput{
+public class CreateCourseRepository implements CreateCourseGateWay{
     private CreateCourseCRUD createCourseCRUD;
 
     @Autowired

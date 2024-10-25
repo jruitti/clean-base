@@ -2,6 +2,7 @@ package data.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -11,7 +12,7 @@ import java.util.logging.Level;
 //Table(name="course")
 
 public class CourseData {
-    @id
+    @Id
     private UUID id;
     @Column(name="name")
     private String name;
