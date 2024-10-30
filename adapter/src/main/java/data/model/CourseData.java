@@ -1,14 +1,14 @@
 package data.model;
 
+import curso.modelo.Level;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 import java.time.LocalDate;
 import java.util.UUID;
-import java.util.logging.Level;
 
-@Entity(name="course")
+@Entity
 //Table(name="course")
 
 public class CourseData {
@@ -16,7 +16,7 @@ public class CourseData {
     private UUID id;
     @Column(name="name")
     private String name;
-    @Column(name="inscription_Deadline")
+    @Column(name="inscription_deadline")
     private LocalDate fecha_cierre_inscripcion;
     @Column(name="level")
     private Level level;
@@ -31,22 +31,16 @@ public class CourseData {
         this.level = level;
     }
 
+
     public UUID getId() {
         return id;
-    }
-    public void setId(UUID id) {
-        this.id = id;
     }
     public String getName() {
         return name;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
     public LocalDate getFecha_cierre_inscripcion() {
         return fecha_cierre_inscripcion;
     }
-
     public Level getLevel() {
         return level;
     }

@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class Course {
     private UUID id;
-    private String nombre;
+    private String name;
     private LocalDate fecha_cierre_inscripcion;
     private Level level;
 
@@ -16,17 +16,17 @@ public class Course {
             LocalDate fecha_cierre_inscripcion,
             Level level) {
         this.id = id;
-        this.nombre = nombre;
+        this.name = name;
         this.fecha_cierre_inscripcion = fecha_cierre_inscripcion;
         this.level = level;
     }
 
     public static Course InstanciaCurso(UUID id,
-            String nombre,
+            String name,
             LocalDate fecha_cierre_inscripcion,
             Level level) throws exceptionCursoIncompleto {
 
-        if (nombre == null || nombre.isEmpty())
+        if (name == null || name.isEmpty())
             throw new exceptionCursoIncompleto("El nombre no puede ser nulo o estar vacio");
         if (id == null)
             throw new exceptionCursoIncompleto("El id no puede ser nulo");
@@ -35,22 +35,22 @@ public class Course {
         if (level == null)
             throw new exceptionCursoIncompleto("El nivel no puede ser nulo");
 
-        return new Course(id, nombre, fecha_cierre_inscripcion, level);
+        return new Course(id, name, fecha_cierre_inscripcion, level);
     }
 
     public UUID getId() {
         return id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public LocalDate getFecha_cierre_inscripcion() {
+    public LocalDate getFechaCierreInscripcion() {
         return fecha_cierre_inscripcion;
     }
 
-    public Level getNivel() {
+    public Level getLevel() {
         return level;
     }
 
