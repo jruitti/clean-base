@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("curso")
+@RequestMapping("/curso")
 public class RegistrarCursoController {
 
     RegistrarCursoInput registrarCursoInput;
@@ -20,7 +20,7 @@ public class RegistrarCursoController {
     public ResponseEntity<?> registrarCurso(@RequestBody CursoDTO cursoDTO) {
         try {
             return ResponseEntity.ok().body(registrarCursoInput.registrarCurso(cursoDTO.getNombre(),cursoDTO.getFecha(),cursoDTO.getNivel()));
-        } catch (RuntimeException e) {
+        } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }

@@ -13,7 +13,7 @@ import java.util.UUID;
 @Repository
 public class RegistrarCursoRepository implements RegistrarCursoOutput {
 
-    private RegistrarCursoCRUD registrarCursoCRUD;
+    RegistrarCursoCRUD registrarCursoCRUD;
 
     @Autowired
     public RegistrarCursoRepository(RegistrarCursoCRUD registrarCursoCRUD) {
@@ -21,9 +21,13 @@ public class RegistrarCursoRepository implements RegistrarCursoOutput {
     }
 
     @Override
-    public UUID registrarCurso(Curso curso) {
-        registrarCursoCRUD.save(CursoDato.fromDomain(curso));
-        return null;
+    public UUID registrarCurso(Curso curso){
+        try {
+            return registrarCursoCRUD.save(CursoDato.fromDomain(curso)).getId();
+        } catch (RuntimeException e) {
+            return null;
+        }
+
     }
 
     @Override
