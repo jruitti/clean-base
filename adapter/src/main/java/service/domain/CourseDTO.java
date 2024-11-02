@@ -13,16 +13,16 @@ import org.hibernate.validator.constraints.br.CPF;
 import java.time.LocalDate;
 import java.util.UUID;
 
-@Table
+@Entity
 public class CourseDTO {
-
     @Id
+    @JsonProperty
     private UUID id;
-    @Column(name = "name")
+    @JsonProperty
     private String name; // Cambié `nombre` a `name`
-    @Column(name = "inscription_deadline")
+    @JsonProperty
     private LocalDate fecha_cierre_inscripcion;
-    @Column(name = "level")
+    @JsonProperty
     private Level level;
 
     public CourseDTO(UUID id, String name, LocalDate fecha_cierre_inscripcion, Level level) {
@@ -30,6 +30,10 @@ public class CourseDTO {
         this.name = name;
         this.fecha_cierre_inscripcion = fecha_cierre_inscripcion;
         this.level = level;
+    }
+
+    public CourseDTO() {
+
     }
 
     public UUID getId() {

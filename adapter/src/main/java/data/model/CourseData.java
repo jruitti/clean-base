@@ -1,18 +1,15 @@
 package data.model;
 
 import curso.modelo.Level;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-//Table(name="course")
-
 public class CourseData {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
     @Column(name="name")
     private String name;
@@ -31,7 +28,6 @@ public class CourseData {
         this.level = level;
     }
 
-
     public UUID getId() {
         return id;
     }
@@ -43,6 +39,22 @@ public class CourseData {
     }
     public Level getLevel() {
         return level;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setFecha_cierre_inscripcion(LocalDate fecha_cierre_inscripcion) {
+        this.fecha_cierre_inscripcion = fecha_cierre_inscripcion;
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
     }
 
     public static CourseData fromDomain(CourseData coreCourse) {
