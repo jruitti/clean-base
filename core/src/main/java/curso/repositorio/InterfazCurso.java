@@ -1,6 +1,10 @@
 package curso.repositorio;
+import curso.modelo.Curso;
+import java.util.*;
 
 public interface InterfazCurso {
-    boolean existeCurso(String nombre);
+    Curso gurdar (Curso curso);
+    List<Curso>buscarTodos();
+    Optional<Curso>buscarPorNombre(String nombre);
 
 }
