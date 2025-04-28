@@ -1,7 +1,5 @@
 package curso.modelo;
-import curso.repositorio.InterfazCurso;
 
-import curso.exception.CursoDuplicadoException;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -11,20 +9,14 @@ public class Curso {
     private LocalDateTime fechaCierreInscripcion;
     private Nivel nivel;
 
-
-    private Curso(Long id, String nombre, LocalDateTime fechaCierreInscripcion, Nivel nivel)
-    {
-
+    public Curso(Long id, String nombre, LocalDateTime fechaCierreInscripcion, Nivel nivel) {
         this.id = id;
         this.nombre = nombre;
         this.fechaCierreInscripcion = fechaCierreInscripcion;
         this.nivel = nivel;
-
     }
-    public static Curso crearCurso(Long id,String nombre, LocalDateTime fechaCierreInscripcion, Nivel nivel, InterfazCurso interfazCurso) {
-        if (interfazCurso.buscarPorNombre(nombre).isPresent()) {
-            throw new CursoDuplicadoException("El curso ya existe");
-        }
+
+    public static Curso crearCurso(Long id, String nombre, LocalDateTime fechaCierreInscripcion, Nivel nivel) {
         if (nombre == null || nombre.trim().isEmpty()) {
             throw new IllegalArgumentException("El nombre es obligatorio");
         }
@@ -40,6 +32,7 @@ public class Curso {
 
 
     public Long getId() {
+
         return id;
     }
     public void setId(Long id) {
@@ -47,6 +40,7 @@ public class Curso {
     }
 
     public String getNombre() {
+
         return nombre;
     }
 
